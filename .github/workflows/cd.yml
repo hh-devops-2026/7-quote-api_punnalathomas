@@ -1,0 +1,13 @@
+name: CD
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: deploy to render
+        run: curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
